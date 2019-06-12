@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import game.dice.com.dicegameapp.R;
+import game.dice.com.dicegameapp.domain.Player;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,9 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        EditText playerName = (EditText)findViewById(R.id.playerName);
-        
     }
-
+    //mètode per quan apreti el botó de registre
+    public void registerPlayer(View view){
+        EditText playerName = (EditText)findViewById(R.id.playerName);
+        Player player = new Player(playerName.getText().toString());
+    }
 }

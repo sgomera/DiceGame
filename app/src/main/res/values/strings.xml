@@ -10,4 +10,8 @@
     <string name="play">play</string>
     <string name="result">result</string>
     <string name="stats">STATS</string>
+    <string name="_0">0%</string>
+    <string name="success">Success %</string>
+    <string name="_0">0%</string>
+    <string name="success">Success %</string>
 </resources>

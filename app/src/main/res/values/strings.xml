@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DiceGameApp</string>
+    <string name="register">REGISTER</string>
+    <string name="welcome_player">Welcome Player</string>
+    <string name="nick_name">Enter Nick Name</string>
+    <string name="throw_the_dices">Throw the dices!</string>
+    <string name="_7_to_win">7 to win</string>
+    <string name="dice2">dice2</string>
+    <string name="dice1">dice1</string>
+    <string name="play">play</string>
+    <string name="result">result</string>
+    <string name="stats">STATS</string>
+</resources>

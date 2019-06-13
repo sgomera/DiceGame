@@ -1,5 +1,7 @@
 package game.dice.com.dicegameapp.domain;
 
+
+
 public class Game {
 
 	private Dice dice1=new Dice();
@@ -9,6 +11,7 @@ public class Game {
 	}
 	
 	public boolean playGame() {
+
 		dice1.rollDice();
 		dice2.rollDice();
 		
@@ -21,6 +24,15 @@ public class Game {
 	
 	public boolean hasWon() {
 		return getSumDices()==7;
+	}
+
+
+	//mètodes propis
+	public int getDice1Value(){
+		return dice1.getValue();
+	}
+	public int getDice2Value(){
+		return dice2.getValue();
 	}
 
 }

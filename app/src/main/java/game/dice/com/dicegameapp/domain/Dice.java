@@ -14,8 +14,9 @@ public class Dice {
 	public void rollDice() {
 		value=new Random().nextInt(DICE_SIDES)+1;
 	}
-	
+
 	public int getValue() {
 		return value;
 	}
 }
+

@@ -15,6 +15,7 @@ import game.dice.com.dicegameapp.domain.Player;
 
 public class MainActivity extends AppCompatActivity {
     public Player player;
+    EditText playerName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,16 +32,29 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //============================PERSISTÈNCIA AMB BUNDLE========================================
     //mètode que s'activa sol quan es surt de l'activitat. Guarda a un bundle anomenat "playerData"
     //el parell de valors key= cuenta i value = contador. I després el guarda en l'activitat
     //pare, per això posa super.
-    /*public void onSaveInstanceState(Bundle playerData) {
+    public void onSaveInstanceState(Bundle playerData) {
         playerData.putString("name",player.getName());
         super.onSaveInstanceState(playerData);
-    }*/
+    }
+
+    // mètode que recupera el valor del bundle playerData que estava guardat en el pare (super),
+    // quan es reïnicia una activitat. Guarda a la variable Player Name, el valor del bundle playerData
+    // que té per key "name" i després el posa a la vista playerName.
+    // després de sobreescriure aquests dos mètodes, quan canviem l'orientació del dispositiu,
+    // ja no es perd la informació del contador.
+    public void onRestoreInstanceState(Bundle playerData){
+        super.onRestoreInstanceState(playerData);
+        player.setName(playerData.getString("name"));
+        playerName.setText("" + player.getName());
+    }
+    //===========================================================================================
 
     //-------------------------PERSISTENCE WITH SHAREDPREFERENCES-----------------------------
-//-----------stores the data in sharedpreferences.xml (even when app i restarted)---------
+/*//-----------stores the data in sharedpreferences.xml (even when app i restarted)---------
     public void onPause() {
         super.onPause();
 
@@ -70,6 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         playerName.setText("" + player.getName());
 
-    }
+    }*/
 
 }

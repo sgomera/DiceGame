@@ -23,4 +23,8 @@ public class Player {
 	public List<Game> getAllGames() {
 		return games;
 	}
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

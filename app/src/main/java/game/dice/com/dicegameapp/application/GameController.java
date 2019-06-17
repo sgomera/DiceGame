@@ -21,6 +21,11 @@ public class GameController {
 		return player.getName();
 	}
 
+	//setter propi
+	public void setPlayerName(String playerName) {
+		this.player.setName(playerName);
+	}
+
 	public boolean playGame() {
 		Game game = new Game();
 		boolean hasWon = game.playGame();

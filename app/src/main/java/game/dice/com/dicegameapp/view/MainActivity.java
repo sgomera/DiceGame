@@ -10,21 +10,35 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import game.dice.com.dicegameapp.R;
+import game.dice.com.dicegameapp.application.GameController;
 import game.dice.com.dicegameapp.application.PlayGame;
 import game.dice.com.dicegameapp.domain.Player;
 
 public class MainActivity extends AppCompatActivity {
     public Player player;
     EditText playerName;
+    GameController gameController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
     //mètode per quan apreti el botó de registre
-    public void registerPlayer(View view){
+/*    public void registerPlayer(View view){
         EditText playerName = (EditText)findViewById(R.id.playerName);
         player = new Player(playerName.getText().toString());
+
+        Toast.makeText(this, "Player Registered", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, PlayGame.class);
+        startActivity(intent);
+    }*/
+
+    //resulta que no he fet servir els mètodes de GameController per a crear el Player
+    public void registerPlayer(View view){
+        EditText playerName = (EditText)findViewById(R.id.playerName);
+        gameController = new GameController();
+        gameController.createPlayer(playerName.getText().toString());
 
         Toast.makeText(this, "Player Registered", Toast.LENGTH_SHORT).show();
 
@@ -37,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     //el parell de valors key= cuenta i value = contador. I després el guarda en l'activitat
     //pare, per això posa super.
     public void onSaveInstanceState(Bundle playerData) {
-        playerData.putString("name",player.getName());
+    //    playerData.putString("name",player.getName());
+        playerData.putString("name",gameController.getPlayerName());
         super.onSaveInstanceState(playerData);
     }
 
@@ -48,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
     // ja no es perd la informació del contador.
     public void onRestoreInstanceState(Bundle playerData){
         super.onRestoreInstanceState(playerData);
-        player.setName(playerData.getString("name"));
+        //player.setName(playerData.getString("name"));
+        gameController.setPlayerName(playerData.getString("name"));
+        //playerName.setText("" + player.getName());
         playerName.setText("" + player.getName());
     }
     //===========================================================================================

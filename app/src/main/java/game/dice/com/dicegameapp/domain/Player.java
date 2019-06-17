@@ -24,7 +24,8 @@ public class Player {
 		return games;
 	}
 
-    public void setName(String name) {
+    //setter propi per treballar amb bundles
+	public void setName(String name) {
         this.name = name;
     }
 }

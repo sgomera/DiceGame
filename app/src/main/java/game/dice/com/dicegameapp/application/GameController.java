@@ -43,12 +43,22 @@ public class GameController {
 		return hasWon;
 	}
 
+/*	public String getPlayerGamesToString() {
+		String text = "";
+		List<Game> games = player.getAllGames();
+
+		for (Game game : games) {
+			text += "SUMA: " + game.getSumDices() + " RESULTAT: " + game.hasWon() +"\n";
+		}
+		return text;
+	}*/
+
 	public String getPlayerGamesToString() {
 		String text = "";
 		List<Game> games = player.getAllGames();
 
 		for (Game game : games) {
-			text += "SUMA: " + game.getSumDices() + " RESULTAT: " + game.hasWon();
+			text += "SUMA: " + game.getSumDices() + " RESULTAT: " + game.hasWon() +"\n";
 		}
 		return text;
 	}

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import game.dice.com.dicegameapp.R;
@@ -100,13 +101,15 @@ public class PlayGame extends Activity {
 
 
     public void onStatsButton(View view){
+        DecimalFormat df = new DecimalFormat("#%");
 
         Intent intent = new Intent(this, ShowStats.class);
         intent.putExtra("name", gameController.getPlayerName());
         intent.putExtra("games", gameController.getPlayerGamesToString());
-        intent.putExtra("ranking", gameController.getPlayerRanking());
+        intent.putExtra("ranking", "" + df.format(gameController.getPlayerRanking()));
         startActivity(intent);
     }
+
 
     public void onSaveInstanceState(Bundle playerData) {
         String text = "";

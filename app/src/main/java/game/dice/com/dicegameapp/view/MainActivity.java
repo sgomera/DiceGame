@@ -2,6 +2,7 @@ package game.dice.com.dicegameapp.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,34 +11,52 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import game.dice.com.dicegameapp.R;
+import game.dice.com.dicegameapp.application.GameController;
 import game.dice.com.dicegameapp.application.PlayGame;
 import game.dice.com.dicegameapp.domain.Player;
 
 public class MainActivity extends AppCompatActivity {
     public Player player;
     EditText playerName;
+    GameController gameController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    //mètode per quan apreti el botó de registre
-    public void registerPlayer(View view){
+/*    //mètode per quan apreti el botó de registre
+   public void registerPlayer(View view){
         EditText playerName = (EditText)findViewById(R.id.playerName);
         player = new Player(playerName.getText().toString());
 
         Toast.makeText(this, "Player Registered", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, PlayGame.class);
+        intent.putExtra("name", player.getName());
+        startActivity(intent);
+    }*/
+
+    //resulta que no he fet servir els mètodes de GameController per a crear el Player
+   public void registerPlayer(View view){
+        EditText playerName = (EditText)findViewById(R.id.playerName);
+        gameController = new GameController();
+        gameController.createPlayer(playerName.getText().toString());
+
+        Toast.makeText(this, "Player Registered", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(this, PlayGame.class);
+        intent.putExtra("name", gameController.getPlayerName());
+
         startActivity(intent);
     }
 
-    //============================PERSISTÈNCIA AMB BUNDLE========================================
+/*    //============================PERSISTÈNCIA AMB BUNDLE========================================
     //mètode que s'activa sol quan es surt de l'activitat. Guarda a un bundle anomenat "playerData"
     //el parell de valors key= cuenta i value = contador. I després el guarda en l'activitat
     //pare, per això posa super.
     public void onSaveInstanceState(Bundle playerData) {
         playerData.putString("name",player.getName());
+    //   playerData.putString("name",gameController.getPlayerName());
         super.onSaveInstanceState(playerData);
     }
 
@@ -49,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
     public void onRestoreInstanceState(Bundle playerData){
         super.onRestoreInstanceState(playerData);
         player.setName(playerData.getString("name"));
+    //    gameController.setPlayerName(playerData.getString("name"));
         playerName.setText("" + player.getName());
-    }
+      //  playerName.setText("" + gameController.getPlayerName());
+    }*/
     //===========================================================================================
 
-    //-------------------------PERSISTENCE WITH SHAREDPREFERENCES-----------------------------
-/*//-----------stores the data in sharedpreferences.xml (even when app i restarted)---------
+/*    //-------------------------PERSISTENCE WITH SHAREDPREFERENCES-----------------------------
+    //-----------stores the data in sharedpreferences.xml (even when app is restarted)---------
     public void onPause() {
         super.onPause();
 
@@ -66,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor miEditor = datos.edit();
 
         //establir la informació a emmagatzemar:
-        miEditor.putString("name", player.getName());
+        miEditor.putString("name", gameController.getPlayerName());
 
         //transferir la informació a l'objecte SharedPreferences.
         miEditor.apply();
@@ -82,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         player = new Player(datos.getString("name",""));
         EditText playerName = (EditText)findViewById(R.id.playerName);
 
-        playerName.setText("" + player.getName());
+        playerName.setText("" + gameController.getPlayerName());
 
     }*/
 

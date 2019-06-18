@@ -113,15 +113,7 @@ public class PlayGame extends Activity {
 
     public void onSaveInstanceState(Bundle playerData) {
         String text = "";
-        List<Game> games = player.getAllGames();
-
         playerData.putString("name",gameController.getPlayerName());
-
-       /* for (int i = 0; i < games.size() ; i++) {
-            String number = "" + i;
-            playerData.putIntArray("game" + i + 1 , [games.get(i).getDice1Value(),games.get(i).getDice2Value()])
-        }
-*/
         super.onSaveInstanceState(playerData);
     }
 
@@ -129,8 +121,6 @@ public class PlayGame extends Activity {
     public void onRestoreInstanceState(Bundle playerData){
         super.onRestoreInstanceState(playerData);
         gameController.setPlayerName(playerData.getString("name"));
-
         playerPlay.setText("" + gameController.getPlayerName());
-
     }
 }

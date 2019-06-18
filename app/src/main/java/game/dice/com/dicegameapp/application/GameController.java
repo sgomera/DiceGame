@@ -27,7 +27,7 @@ public class GameController {
 		this.player.setName(string);
 	}
 
-
+	//reescric el playGame, per poder obtenir més dades del joc en la pantalla
 /*	public boolean playGame() {
 		Game game = new Game();
 		boolean hasWon = game.playGame();
@@ -43,22 +43,16 @@ public class GameController {
 		return hasWon;
 	}
 
-/*	public String getPlayerGamesToString() {
-		String text = "";
-		List<Game> games = player.getAllGames();
-
-		for (Game game : games) {
-			text += "SUMA: " + game.getSumDices() + " RESULTAT: " + game.hasWon() +"\n";
-		}
-		return text;
-	}*/
-
+	//modificat per mostrar més dades a la pantalla
 	public String getPlayerGamesToString() {
 		String text = "";
 		List<Game> games = player.getAllGames();
 
-		for (Game game : games) {
-			text += "SUMA: " + game.getSumDices() + " RESULTAT: " + game.hasWon() +"\n";
+		for (int i = 0; i < games.size(); i++) {
+			text += "Game " + (i +1) + ": " +
+					"dice1= " + games.get(i).getDice1Value() + ", " +
+					"dice2= " + games.get(i).getDice2Value() + ", " +
+					"total= " + games.get(i).getSumDices() + "\n";
 		}
 		return text;
 	}

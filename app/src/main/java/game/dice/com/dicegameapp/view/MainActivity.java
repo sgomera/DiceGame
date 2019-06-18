@@ -66,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
     // després de sobreescriure aquests dos mètodes, quan canviem l'orientació del dispositiu,
     // ja no es perd la informació del contador.
     public void onRestoreInstanceState(Bundle playerData){
-        super.onRestoreInstanceState(playerData);
-        player.setName(playerData.getString("name"));
+    super.onRestoreInstanceState(playerData);
+    player.setName(playerData.getString("name"));
     //    gameController.setPlayerName(playerData.getString("name"));
-        playerName.setText("" + player.getName());
-      //  playerName.setText("" + gameController.getPlayerName());
-    }*/
+    playerName.setText("" + player.getName());
+    //  playerName.setText("" + gameController.getPlayerName());
+}*/
     //===========================================================================================
 
 /*    //-------------------------PERSISTENCE WITH SHAREDPREFERENCES-----------------------------

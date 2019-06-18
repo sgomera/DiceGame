@@ -21,13 +21,23 @@ public class GameController {
 		return player.getName();
 	}
 
+
 	//mètode propi
 	public void setPlayerName(String string) {
 		this.player.setName(string);
 	}
 
-	public boolean playGame() {
+
+/*	public boolean playGame() {
 		Game game = new Game();
+		boolean hasWon = game.playGame();
+		player.addGame(game);
+		return hasWon;
+	}*/
+
+
+	public boolean playGame(Game game) {
+	//	Game game = new Game();
 		boolean hasWon = game.playGame();
 		player.addGame(game);
 		return hasWon;
